@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Jhonathan Ribeiro">
+	<meta name="description" content="Validação de formulário em javascript com alerts personalizados">
+	<title>::Formulário com validação e alerta personalizado::</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="displayMessage"></div>
+
+	<div class="container">
+		<div class="form">
+			<h4>Formulário</h4><br>
+			<small>Nome</small><br>
+			<input 
+				placeholder="Seu nome..." 
+				autocomplete="off" 
+				type="text" 
+				id="nome" 
+				autofocus>
+			<br><br>
+			<small>Email</small><br>
+			<input 
+				placeholder="Seu email..." 
+				autocomplete="off" 
+				type="email" 
+				id="email" 
+				required>
+			<br><br>
+			<button id="submit">Enviar</button>
+		</div>
+	</div>
+	<footer>
+		<span>Jhonathan Ribeiro 2021&copy;</span>
+	</footer>
+	<script src="script.js"></script>
+</body>
+</html>
