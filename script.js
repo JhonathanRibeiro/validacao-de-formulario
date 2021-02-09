@@ -11,7 +11,10 @@ btn.addEventListener('click', () => {
 			}
 		},
 		validateFields() {
+			
+			
 			const { nome, email } = Form.getValues();
+			
 			if (nome.trim() == '') {
 				Form.nome.classList.add('outlineDanger');
 				Form.email.classList.remove('outlineDanger');
@@ -68,6 +71,6 @@ function displayMessage({ text, icon }) {
 		display.style.display = 'none';
 		panel.parentNode.removeChild(panel);
 	});
-	if(icon === 'warning' ? panel.classList.add('warningAlert') : msg.style.paddingLeft = '20px');
-	if(icon === 'success' ? panel.classList.add('successAlert') : msg.style.paddingLeft = '20px');
+	if (icon === 'warning' ? panel.classList.add('warningAlert') : msg.style.paddingLeft = '20px');
+	if (icon === 'success' ? panel.classList.add('successAlert') : msg.style.paddingLeft = '20px');
 }
