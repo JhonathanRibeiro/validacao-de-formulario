@@ -10,11 +10,8 @@ btn.addEventListener('click', () => {
 				email: Form.email.value,
 			}
 		},
-		validateFields() {
-			
-			
+		validateFields() {		
 			const { nome, email } = Form.getValues();
-			
 			if (nome.trim() == '') {
 				Form.nome.classList.add('outlineDanger');
 				Form.email.classList.remove('outlineDanger');
@@ -37,13 +34,15 @@ btn.addEventListener('click', () => {
 		Form.validateFields();
 		setTimeout(() => {
 			displayMessage({
+				title: 'Sucesso!',
 				icon: 'success',
-				text: 'Enviado com sucesso!'
+				text: 'Contato enviado com sucesso!'
 			});
 		}, 300);
 	} catch (error) {
 		setTimeout(() => {
 			displayMessage({
+				title: 'Atenção!',
 				icon: 'warning',
 				text: `${error.message}`
 			});
@@ -51,14 +50,18 @@ btn.addEventListener('click', () => {
 	}
 });
 
-function displayMessage({ text, icon }) {
-	var display = document.querySelector('.displayMessage');
-	display.style.display = 'block';
+function displayMessage({ title, text, icon }) {
+	var display = document.querySelector('.modal-container');
+	display.classList.add('show')
 
 	var panel = document.createElement('div');
-	panel.setAttribute('class', 'msgBox');
+	panel.setAttribute('class', 'modal');
 	display.appendChild(panel);
-
+	
+	var titleEl = document.createElement('h1');
+	titleEl.textContent = title;
+	panel.appendChild(titleEl);
+	
 	var msg = document.createElement('p');
 	msg.textContent = text;
 	panel.appendChild(msg);
@@ -68,9 +71,15 @@ function displayMessage({ text, icon }) {
 	panel.appendChild(closeBtn);
 
 	closeBtn.addEventListener('click', () => {
-		display.style.display = 'none';
+		display.classList.remove('show')
 		panel.parentNode.removeChild(panel);
 	});
-	if (icon === 'warning' ? panel.classList.add('warningAlert') : msg.style.paddingLeft = '20px');
-	if (icon === 'success' ? panel.classList.add('successAlert') : msg.style.paddingLeft = '20px');
+
+	if(icon === 'warning') {
+		titleEl.classList.add('text-warning');
+		closeBtn.classList.add('btn-warning');
+	} else if(icon === 'success'){
+		titleEl.classList.add('text-success');
+		closeBtn.classList.add('btn-success');
+	}
 }
